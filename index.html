@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blox Vault | Contas de Blox Fruits</title>
+<meta name="description" content="Blox Vault: catálogo de ofertas e contas de Blox Fruits. Veja as ofertas disponíveis e entre em contato pelo Discord.">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta property="og:title" content="Blox Vault | Contas de Blox Fruits">
+<meta property="og:description" content="Confira o catálogo da Blox Vault e veja as ofertas disponíveis de Blox Fruits.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#7c5cff">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Blox Vault",
+  "description": "Catálogo de ofertas da Blox Vault relacionado a Blox Fruits."
+}
+</script>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#050812 url("logo-fundo.jpg") center top/cover fixed no-repeat;color:#fff;position:relative}body:before{content:"";position:fixed;inset:0;background:rgba(3,6,16,.68);z-index:-1;pointer-events:none}
+header{padding:22px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1b2230;background:rgba(5,8,18,.72);backdrop-filter:blur(6px)}
+.logo{font-size:25px;font-weight:800}.logo span{color:#7c5cff}
+nav a{color:#bbb;text-decoration:none;margin-left:22px}
+.hero{padding:70px 6%;text-align:center;background:rgba(11,16,32,.68);backdrop-filter:blur(3px)}
+.hero h1{font-size:45px;margin:0 0 12px}.hero p{color:#aab2c3}
+.container{padding:40px 6%;max-width:1200px;margin:auto}
+.controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:25px}
+input,select{background:#111722;color:#fff;border:1px solid #293246;border-radius:10px;padding:13px}
+input{flex:1;min-width:220px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:rgba(16,22,33,.9);border:1px solid #222c3e;border-radius:16px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.28)}
+.badge{display:inline-block;background:#201b42;color:#a994ff;padding:6px 10px;border-radius:20px;font-size:12px}
+.card h3{margin:15px 0 8px}.info{color:#aeb7c8;font-size:14px;line-height:1.7}
+.price{font-size:24px;font-weight:800;margin:16px 0}
+.btn{border:0;cursor:pointer;font:inherit;display:block;text-align:center;background:#7c5cff;color:white;padding:12px;border-radius:10px;text-decoration:none;font-weight:700}
+footer{text-align:center;color:#737d8f;padding:35px;border-top:1px solid #1b2230;margin-top:50px}
+
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);align-items:center;justify-content:center;padding:20px;z-index:10}
+.modal.open{display:flex}.modal-box{background:#101621;border:1px solid #2a3549;border-radius:18px;padding:25px;max-width:420px;width:100%;text-align:center}
+.modal-box h3{margin-top:0}.qr{background:#fff;padding:12px;border-radius:12px;width:240px;height:240px;margin:18px auto;display:flex;align-items:center;justify-content:center}
+.qr img{max-width:100%;max-height:100%}.close{background:#202a3a;border:0;color:#fff;padding:11px 18px;border-radius:10px;cursor:pointer}
+.pix{font-size:13px;color:#aeb7c8;word-break:break-all}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Blox <span>Vault</span></div>
+  <nav><a href="#contas">Contas</a><a href="#sobre">Sobre</a></nav>
+</header>
+
+<section class="hero">
+  <h1>Blox Vault</h1>
+  <p>Encontre sua próxima conta de Blox Fruits.</p>
+</section>
+
+<main class="container" id="contas">
+  <h2>🛒 Contas disponíveis</h2>
+  <div class="controls">
+    <input id="search" placeholder="Pesquisar conta...">
+    <select id="filter">
+      <option value="all">Todas</option>
+      <option value="1000">Level 1000+</option>
+      <option value="godhuman">Godhuman</option>
+    </select>
+  </div>
+  <div class="grid" id="products"></div>
+</main>
+
+<section class="container" id="sobre">
+  <h2>Sobre a Blox Vault</h2>
+  <p class="info">Catálogo de ofertas da Blox Vault. Para demonstrar interesse em uma oferta, use o botão da conta e siga as instruções de negociação da loja.</p>
+</section>
+
+
+<footer>Blox Vault • Todos os direitos reservados.</footer>
+
+<script>
+// ===== EDITE AS CONTAS AQUI =====
+// Copie um bloco { ... } para adicionar novas ofertas.
+const contas = [
+  {
+    nome: "Conta #001",
+    level: "1000+",
+    detalhes: "Grande chance de Level Max • Espadas, frutas e acessórios aleatórios",
+    preco: "R$ 2,00",
+    tags: ["1000"],
+    discord: "https://discord.gg/bKFShkGTq"
+  },
+  {
+    nome: "Conta #002",
+    level: "Godhuman",
+    detalhes: "Godhuman • Frutas aleatórias • Itens variados e acessórios",
+    preco: "R$ 3,50",
+    tags: ["godhuman"],
+    discord: "https://discord.gg/bKFShkGTq"
+  }
+];
+
+const products = document.getElementById("products");
+const search = document.getElementById("search");
+const filter = document.getElementById("filter");
+
+function render(){
+  const q = search.value.toLowerCase();
+  const f = filter.value;
+  products.innerHTML = "";
+
+  contas.filter(c =>
+    (c.nome+" "+c.level+" "+c.detalhes).toLowerCase().includes(q) &&
+    (f==="all" || c.tags.includes(f))
+  ).forEach(c=>{
+    products.innerHTML += `
+      <article class="card">
+        <span class="badge">${c.level}</span>
+        <h3>${c.nome}</h3>
+        <div class="info">${c.detalhes}</div>
+        <div class="price">${c.preco}</div>
+        <a class="btn" href="https://discord.gg/bKFShkGTq" target="_blank" rel="noopener noreferrer">Tenho interesse</a>
+      </article>`;
+  });
+
+  if(!products.innerHTML) products.innerHTML="<p>Nenhuma conta encontrada.</p>";
+}
+search.addEventListener("input",render);
+filter.addEventListener("change",render);
+render();
+
+</script>
+</body>
+</html>
